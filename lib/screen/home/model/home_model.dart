@@ -1,31 +1,30 @@
 import 'package:flutter/cupertino.dart';
 
 class WeatherModel with ChangeNotifier {
-  final int timezone, id, cod, visibility, dt;
-  final String name, base;
+   int? timezone, id, cod, visibility, dt;
+   String? name, base;
 
   CoordModel? coordModel;
   MainModel? mainModel;
   WindModel? windModel;
   CloudModel? cloudModel;
   SystemModel? systemModel;
-
   List<WeathersModel> weatherList = [];
 
   WeatherModel({
-    required this.timezone,
-    required this.id,
-    required this.cod,
-    required this.visibility,
-    required this.dt,
-    required this.name,
-    required this.base,
-    required this.coordModel,
-    required this.mainModel,
-    required this.windModel,
-    required this.cloudModel,
-    required this.systemModel,
-    required this.weatherList,
+     this.timezone,
+     this.id,
+     this.cod,
+     this.visibility,
+     this.dt,
+     this.name,
+     this.base,
+     this.coordModel,
+     this.mainModel,
+     this.windModel,
+     this.cloudModel,
+     this.systemModel,
+     required this.weatherList,
   });
 
   factory WeatherModel.mapToModel(Map m1) {
@@ -40,7 +39,7 @@ class WeatherModel with ChangeNotifier {
       name: m1['name'],
       base: m1['base'],
       coordModel: CoordModel.mapToModel(
-        m1['coor'],
+        m1['coord'],
       ),
       mainModel: MainModel.mapToModel(
         m1['main'],
@@ -49,7 +48,7 @@ class WeatherModel with ChangeNotifier {
         m1['wind'],
       ),
       cloudModel: CloudModel.mapToModel(
-        m1['cloud'],
+        m1['clouds'],
       ),
       systemModel: SystemModel.mapToModel(
         m1['sys'],
@@ -60,9 +59,9 @@ class WeatherModel with ChangeNotifier {
 }
 
 class CoordModel {
-  final int lon, lat;
+   double? lon, lat;
 
-  CoordModel({required this.lon, required this.lat});
+  CoordModel({ this.lon,  this.lat});
 
   factory CoordModel.mapToModel(Map m1) {
     return CoordModel(lat: m1['lat'], lon: m1['lon']);
@@ -70,15 +69,16 @@ class CoordModel {
 }
 
 class MainModel {
-  final int temp, feels_like, temp_min, temp_max, pressure, humidity;
+      int? pressure, humidity;
+      double? temp, feels_like, temp_min, temp_max;
 
   MainModel(
-      {required this.temp,
-      required this.feels_like,
-      required this.temp_min,
-      required this.temp_max,
-      required this.pressure,
-      required this.humidity});
+      { this.temp,
+       this.feels_like,
+       this.temp_min,
+       this.temp_max,
+       this.pressure,
+       this.humidity});
 
   factory MainModel.mapToModel(Map m1) {
     return MainModel(
@@ -92,9 +92,10 @@ class MainModel {
 }
 
 class WindModel {
-  final int speed, deg;
+   int?  deg;
+   double? speed;
 
-  WindModel({required this.speed, required this.deg});
+  WindModel({ this.speed,  this.deg});
 
   factory WindModel.mapToModel(Map m1) {
     return WindModel(speed: m1['speed'], deg: m1['deg']);
@@ -102,9 +103,9 @@ class WindModel {
 }
 
 class CloudModel {
-  final int all;
+   int? all;
 
-  CloudModel({required this.all});
+  CloudModel({ this.all});
 
   factory CloudModel.mapToModel(Map m1) {
     return CloudModel(all: m1['speed']);
@@ -112,15 +113,15 @@ class CloudModel {
 }
 
 class SystemModel {
-  final int type, id, sunrise, sunset;
-  final String country;
+   int? type, id, sunrise, sunset;
+   String? country;
 
   SystemModel(
-      {required this.type,
-      required this.id,
-      required this.sunrise,
-      required this.sunset,
-      required this.country});
+      { this.type,
+       this.id,
+       this.sunrise,
+       this.sunset,
+       this.country});
 
   factory SystemModel.mapToModel(Map m1) {
     return SystemModel(
@@ -133,14 +134,14 @@ class SystemModel {
 }
 
 class WeathersModel {
-  final int id;
-  final String main, description, icon;
+   int? id;
+   String? main, description, icon;
 
   WeathersModel(
-      {required this.id,
-      required this.main,
-      required this.description,
-      required this.icon});
+      { this.id,
+       this.main,
+       this.description,
+       this.icon});
 
   factory WeathersModel.mapToModel(Map m1) {
     return WeathersModel(
