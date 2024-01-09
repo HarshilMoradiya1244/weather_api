@@ -368,30 +368,35 @@ class _WeatherScreenState extends State<WeatherScreen> {
                   onPressed: () {
                     providerw!.changeLocation(21.1702, 72.8311);
                     providerr!.getData();
+                    Navigator.pop(context);
                   },
                   child: Text("Surat")),
               TextButton(
                   onPressed: () {
                     providerw!.changeLocation(30.7352, 79.0669);
                     providerr!.getData();
+                    Navigator.pop(context);
                   },
                   child: Text("KedarNath")),
               TextButton(
                   onPressed: () {
                     providerw!.changeLocation(23.0225,72.5714);
                     providerr!.getData();
+                    Navigator.pop(context);
                   },
                   child: Text("Ahemdabad")),
               TextButton(
                   onPressed: () {
                     providerw!.changeLocation(27.0238,74.2179);
                     providerr!.getData();
+                    Navigator.pop(context);
                   },
                   child: Text("Rajsthan")),
               TextButton(
                   onPressed: () {
                     providerw!.changeLocation(28.7041,77.1025);
                     providerr!.getData();
+                    Navigator.pop(context);
                   },
                   child: Text("Delhi")),
             ],
